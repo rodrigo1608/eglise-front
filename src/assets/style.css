@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --color-elighter: #FFFFFF;
+    --color-elight: #F5F5F5;
+    --color-egray: #E8E8E8;
+    --color-edark: #CFCFCF;
+    /* --font-logo: "Crimison Pro"; */
+}
