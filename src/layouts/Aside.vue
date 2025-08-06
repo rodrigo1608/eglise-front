@@ -10,10 +10,10 @@ const props = defineProps({
 // Define as classes para a versão desktop, que empurra o conteúdo
 const asideDesktopClasses = computed(() => {
     return [
-        'h-dvh', 'bg-elight', 'transition-all', 'duration-300',
-        'hidden sm:block',
-        props.isAsideOpen ? 'sm:w-60' : 'sm:w-0',
-        props.isAsideOpen ? 'sm:overflow-auto' : 'sm:overflow-hidden'
+        'h-dvh', 'bg-elight', 'transition-all', 'duration-300', 'p-4',
+        'hidden md:block',
+        props.isAsideOpen ? 'md:w-60' : 'md:w-16',
+        props.isAsideOpen ? 'md:overflow-auto' : 'md:overflow-hidden'
     ]
 })
 </script>
@@ -21,8 +21,7 @@ const asideDesktopClasses = computed(() => {
 <template>
     <!-- Versão Mobile (com animação de deslizar) -->
     <Transition name="slide">
-        <aside v-if="isAsideOpen" class="sm:hidden h-dvh bg-elight w-full transition-transform duration-300 transform">
-            <!-- <MenuButton @toggle="toggleAside" /> -->
+        <aside v-if="isAsideOpen" class="md:hidden h-dvh bg-elight w-full transition-transform duration-300 transform">
         </aside>
     </Transition>
 
