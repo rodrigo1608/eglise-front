@@ -30,6 +30,7 @@ const navigationItems = ref([
     <!-- Versão Mobile (com animação de deslizar) -->
     <Transition name="slide">
         <aside v-if="isAsideOpen" class="md:hidden h-dvh bg-elight w-full transition-transform duration-300 transform">
+            <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen" />
         </aside>
     </Transition>
 
