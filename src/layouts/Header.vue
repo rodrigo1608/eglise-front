@@ -13,8 +13,8 @@ const props = defineProps({
 
     <header class="p-4">
 
-        <nav class="flex justify-between items-center">
-            <MenuButton @toggle="toggleAside" class="sm:hidden" />
+        <nav class="flex justify-between items-center ">
+            <MenuButton @toggle="toggleAside" class="md:hidden" />
             <a href="#" class="font-[Crimson_Pro] text-gray-500 text-lg tracking-wider font-semibold">Matrisi</a>
             <Avatar />
         </nav>
