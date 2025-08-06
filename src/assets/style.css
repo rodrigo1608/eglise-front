@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-    --color-elighter: #FFFFFF;
-    --color-elight: #F5F5F5;
-    --color-egray: #E8E8E8;
-    --color-edark: #CFCFCF;
-    /* --font-logo: "Crimison Pro"; */
+    --color-elighter: #F2F2F2;
+    --color-elight: #E4E4E4;
+    --color-egray: #D6D6D6;
+    --color-edark-gray: #404040;
+    --color-edark: #333333;
+    --color-edarker: #262626;
+
 }

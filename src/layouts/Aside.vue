@@ -22,7 +22,7 @@ const asideDesktopClasses = computed(() => {
     <!-- Versão Mobile (com animação de deslizar) -->
     <Transition name="slide">
         <aside v-if="isAsideOpen" class="sm:hidden h-dvh bg-elight w-full transition-transform duration-300 transform">
-            <MenuButton @toggle="toggleAside" />
+            <!-- <MenuButton @toggle="toggleAside" /> -->
         </aside>
     </Transition>
 
