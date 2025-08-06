@@ -1,6 +1,7 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import MenuButton from '@/MenuButton.vue'
+import AsideNavigation from '@/AsideNavigation.vue'
 
 const props = defineProps({
     'isAsideOpen': Boolean,
@@ -12,10 +13,17 @@ const asideDesktopClasses = computed(() => {
     return [
         'h-dvh', 'bg-elight', 'transition-all', 'duration-300', 'p-4',
         'hidden md:block',
-        props.isAsideOpen ? 'md:w-60' : 'md:w-16',
+        props.isAsideOpen ? 'md:w-60' : 'md:w-22',
         props.isAsideOpen ? 'md:overflow-auto' : 'md:overflow-hidden'
     ]
 })
+
+// Define a lista de navegação
+const navigationItems = ref([
+    { name: 'Users', href: '#', icon: 'fa-solid fa-users' },
+    { name: 'Organizations', href: '#', icon: 'fa-solid fa-building' }
+]);
+
 </script>
 
 <template>
@@ -28,6 +36,7 @@ const asideDesktopClasses = computed(() => {
     <!-- Versão Desktop (com animação de largura) -->
     <aside :class="asideDesktopClasses">
         <MenuButton @toggle="toggleAside" />
+        <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen" />
     </aside>
 
 </template>
