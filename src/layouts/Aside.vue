@@ -1,12 +1,14 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onUpdated } from 'vue'
 import MenuButton from '@/MenuButton.vue'
 import AsideNavigation from '@/AsideNavigation.vue'
 
 const props = defineProps({
-    'isAsideOpen': Boolean,
+    'isAsideOpen': { type: Boolean, default: false },
     'toggleAside': Function
 })
+
+onUpdated(() => console.log(props.isAsideOpen))
 
 // Define as classes para a versão desktop, que empurra o conteúdo
 const asideDesktopClasses = computed(() => {
@@ -21,8 +23,14 @@ const asideDesktopClasses = computed(() => {
 // Define a lista de navegação
 const navigationItems = ref([
     { name: 'Users', href: '#', icon: 'fa-solid fa-users' },
-    { name: 'Organizations', href: '#', icon: 'fa-solid fa-building' }
+    { name: 'Organizations', href: '#', icon: 'fa-solid fa-building' },
+
 ]);
+
+const selectedComponent = ref('');
+const emit = defineEmits(['emitedEntity'])
+
+const emitSelectedEntity = (selectedEntity) => emit('emitedEntity', selectedEntity)
 
 </script>
 
@@ -30,14 +38,19 @@ const navigationItems = ref([
     <!-- Versão Mobile (com animação de deslizar) -->
     <Transition name="slide">
         <aside v-if="isAsideOpen" class="md:hidden h-dvh bg-elight w-full transition-transform duration-300 transform">
-            <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen" />
+            <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen"
+                @select-entity="emitSelectedEntity" />
         </aside>
     </Transition>
 
     <!-- Versão Desktop (com animação de largura) -->
     <aside :class="asideDesktopClasses">
         <MenuButton @toggle="toggleAside" />
-        <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen" />
+        <AsideNavigation :navigation-items="navigationItems" :is-aside-open="props.isAsideOpen"
+            @select-entity="emitSelectedEntity" />
+
+        {{ selectedComponent }}
+
     </aside>
 
 </template>

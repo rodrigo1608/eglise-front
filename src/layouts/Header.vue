@@ -2,9 +2,11 @@
 import Avatar from '@/Avatar.vue';
 import MenuButton from '@/MenuButton.vue';
 
-const props = defineProps({
-    // 'isAsideOpen': Boolean,
-    'toggleAside': Function
+defineProps({
+    'toggleAside': {
+        type: Function,
+        required: true
+    }
 })
 
 </script>

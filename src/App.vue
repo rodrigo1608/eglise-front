@@ -8,17 +8,21 @@ import Main from './layouts/Main.vue'
 const isAsideOpen = ref(false)
 const toggleAside = () => isAsideOpen.value = !isAsideOpen.value
 
+const currentEntity = ref('Users');
+const updateEntity = (selectedEntity) => currentEntity.value = selectedEntity
+
+
 </script>
 
 <template>
 
   <div class="flex flex-col md:flex-row min-h-screen">
     <Header :toggle-aside="toggleAside" class="md:hidden" />
-    <Aside :is-aside-open="isAsideOpen" :toggle-aside="toggleAside" />
+    <Aside :is-aside-open="isAsideOpen" :toggle-aside="toggleAside" @emited-entity="updateEntity" />
 
     <div class="flex flex-col w-full">
       <Header :toggle-aside="toggleAside" class="hidden md:block" />
-      <Main />
+      <Main :currentEntity="currentEntity" />
     </div>
   </div>
 
